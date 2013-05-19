@@ -44,6 +44,6 @@ void Inventory::removeItem(Item i){
 	if(inventory.size()<s0){
 		itemWeight -= i.getWeight();
 	}else{
-		throw ItemNotFound;
+		throw ItemNotFound();
 	}
 }

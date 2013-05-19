@@ -8,6 +8,7 @@
 #ifndef INVENTORY_HH_
 #define INVENTORY_HH_
 #include "Item.hh"
+#include "AbstractInventory.hh"
 #include <list>
 #include <string.h>
 #include <algorithm>
@@ -29,7 +30,7 @@ inline bool cmp_by_name(const Item& a, const Item& b) {
     return a.getName() < b.getName();
 }
 
-class Inventory {
+class Inventory : public AbstractInventory {
 public:
 	Inventory();
 	virtual ~Inventory();
