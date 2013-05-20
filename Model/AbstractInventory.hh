@@ -8,6 +8,7 @@
 #ifndef ABSTRACTINVENTORY_HH_
 #define ABSTRACTINVENTORY_HH_
 #include "Item.hh"
+#include <list>
 
 class AbstractInventory {
 public:
