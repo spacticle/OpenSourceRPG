@@ -7,12 +7,16 @@
 
 #ifndef ABSTRACTITEM_HH_
 #define ABSTRACTITEM_HH_
-#include "Item.hh"
+#include <string.h>
+#include <string>
+//#include "Item.hh"
+
+class Item;
 
 class AbstractItem {
 public:
 	AbstractItem(){};
-	virtual ~AbstractItem() = 0;
+	virtual ~AbstractItem();
 
 	virtual inline int getWeight() = 0;
 	virtual inline std::string getName() const = 0;//TODO note here where "const" is placed

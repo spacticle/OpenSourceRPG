@@ -6,6 +6,7 @@
  */
 
 #include "AbstractItem.hh"
+#include "Item.hh"
 
 AbstractItem::~AbstractItem() {
 	// TODO Auto-generated destructor stub

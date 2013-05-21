@@ -7,8 +7,9 @@
 
 #ifndef ABSTRACTINVENTORY_HH_
 #define ABSTRACTINVENTORY_HH_
-#include "Item.hh"
 #include <list>
+
+class Item;
 
 class AbstractInventory {
 public:
