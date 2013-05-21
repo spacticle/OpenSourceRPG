@@ -34,4 +34,4 @@ AbstractInventory.o:
 	$(CXX) -c AbstractInventory.cpp -o AbstractInventory.o
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET) *.o
