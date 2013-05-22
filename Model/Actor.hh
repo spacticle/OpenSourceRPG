@@ -9,9 +9,9 @@
 #define ACTOR_HH_
 #include <string>
 #include <string.h>
+#include "Inventory.hh"
 
 class Location;
-class Inventory;
 
 class Actor{
 public:
@@ -20,9 +20,9 @@ public:
 	virtual ~Actor();
 
 	virtual void setCurrentLocation(Location &l);
-	virtual inline Location getCurrentLocation() const{ return currentLocation;}
+	virtual inline Location *getCurrentLocation() const{ return currentLocation;}
 	virtual inline std::string getName(){ return name;}
-	virtual inline Inventory getActorInventory() const{ return inventory;}
+	virtual inline Inventory *getActorInventory() const{ return inventory;}
 	virtual inline int getHealth(){ return health;}
 	virtual void alterHealth(int var);
 	virtual inline int getBaseDamage(){ return baseDamage;}

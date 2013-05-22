@@ -7,12 +7,13 @@
 
 #ifndef LOCATION_HH_
 #define LOCATION_HH_
-#include "Inventory.hh"
 #include <string.h>
+#include <string>
 #include <map>
 #include <vector>
 
 class Actor;
+class Inventory;
 
 typedef enum Direction{
 	North, South,
@@ -32,13 +33,14 @@ public:
 	virtual void enter(Actor a);
 	virtual void exit(Actor a);
 	virtual inline std::string getName() const {return cellName;}
-	virtual inline Inventory getInventory() const {return inventory;}
+	virtual inline Inventory *getInventory() const {return inventory;}
 	virtual inline int getLevel() {return level;}
+	virtual Location & operator=(const Location&);
 private:
 	std::string cellName;
 	std::map<Direction, const Location&> neighbors;
 	std::vector<Actor> actors;
-	Inventory inventory;
+	Inventory *inventory;
 	int level;
 };
 

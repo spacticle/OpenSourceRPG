@@ -7,23 +7,14 @@
 
 #ifndef INVENTORY_HH_
 #define INVENTORY_HH_
-#include "Item.hh"
 #include <list>
 #include <string.h>
 #include <algorithm>
 #include <exception>
+#include "Item.hh"
+//class Item;
 
-class OverCapacity : public std::exception{
-	virtual const char* what() const throw(){
-		return "Item is too heavy to place into inventory!\n";
-	}
-} OverCap;
 
-class ItemNotFound : public std::exception{
-	virtual const char* what() const throw(){
-		return "Item is not in inventory!\n";
-	}
-} ItNoFound;
 
 inline bool cmp_by_name(const Item& a, const Item& b) {
     return a.getName() < b.getName();

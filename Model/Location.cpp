@@ -17,7 +17,7 @@ Location::Location() {
 	cellName = "default";
 	//neighbors = map<Direction, Location>();
 	actors = vector<Actor>();
-	inventory = Inventory();
+	inventory = new Inventory();
 	level = 0;
 }
 
@@ -26,7 +26,7 @@ Location::Location(string name, int level){
 	this->level = level;
 	//neighbors = map<Direction, Location>();
 	actors = vector<Actor>();
-	inventory = Inventory();
+	inventory = new Inventory();
 }
 
 Location::~Location() {
@@ -51,3 +51,17 @@ void Location::exit(Actor a){
 		}
 	}
 }
+
+Location &Location::operator=(const Location& l){
+	if(this != &l){
+		cellName = l.getName();
+		neighbors = l.listNeighbors();
+		actors = l.listOccupants();
+		inventory = l.getInventory();
+		//level = l.getLevel();
+	}
+	return *this;
+}
+
+
+

@@ -15,12 +15,16 @@ Actor::Actor() {
 	name = "Default";
 	health = 100;
 	baseDamage = 100;
+	currentLocation = new Location();
+	inventory = new Inventory();
 }
 
 Actor::Actor(string name, int health, int damage){
 	this->name = name;
 	this->health = health;
 	baseDamage = damage;
+	currentLocation = new Location();
+	inventory = new Inventory();
 }
 
 Actor::~Actor() {
@@ -28,9 +32,9 @@ Actor::~Actor() {
 }
 
 void Actor::setCurrentLocation(Location &l){
-	this->currentLocation = l;
+	*currentLocation = l;
 }
 
 void Actor::alterHealth(int adjust){
-	this->health += adjust;
+	health += adjust;
 }
