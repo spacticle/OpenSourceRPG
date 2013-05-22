@@ -9,9 +9,8 @@
 #define ITEM_HH_
 #include <string.h>
 #include <string>
-#include "AbstractItem.hh"
 
-class Item : public AbstractItem{
+class Item{
 public:
 	Item();
 	Item(std::string name, std::string description, int weight);

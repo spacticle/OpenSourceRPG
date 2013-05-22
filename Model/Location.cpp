@@ -6,7 +6,7 @@
  */
 
 #include "Location.hh"
-#include "AbstractLocation.hh"
+#include "Actor.hh"
 #include <string.h>
 #include <map>
 #include <vector>

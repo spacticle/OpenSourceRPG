@@ -7,20 +7,20 @@
 
 #ifndef LOCATION_HH_
 #define LOCATION_HH_
-#include "AbstractLocation.hh"
-#include "Actor.hh"
 #include "Inventory.hh"
 #include <string.h>
 #include <map>
 #include <vector>
 
-class Location : public AbstractLocation{
-	std::string cellName;
-	std::map<Direction, const Location&> neighbors;
-	std::vector<Actor> actors;
-	Inventory inventory;
-	int level;
+class Actor;
 
+typedef enum Direction{
+	North, South,
+	East, West,
+	Up, Down
+} Direction;
+
+class Location {
 public:
 	Location();
 	Location(std::string name, int level);
@@ -34,6 +34,12 @@ public:
 	virtual inline std::string getName() const {return cellName;}
 	virtual inline Inventory getInventory() const {return inventory;}
 	virtual inline int getLevel() {return level;}
+private:
+	std::string cellName;
+	std::map<Direction, const Location&> neighbors;
+	std::vector<Actor> actors;
+	Inventory inventory;
+	int level;
 };
 
 #endif /* LOCATION_HH_ */

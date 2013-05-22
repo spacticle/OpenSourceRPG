@@ -8,7 +8,6 @@
 #ifndef INVENTORY_HH_
 #define INVENTORY_HH_
 #include "Item.hh"
-#include "AbstractInventory.hh"
 #include <list>
 #include <string.h>
 #include <algorithm>
@@ -30,14 +29,14 @@ inline bool cmp_by_name(const Item& a, const Item& b) {
     return a.getName() < b.getName();
 }
 
-class Inventory : public AbstractInventory {
+class Inventory{
 public:
 	Inventory();
 	virtual ~Inventory();
 	Inventory(int capacity, int itemWeight = 0);
 
-	inline int getWeight(){return itemWeight;}
-	inline int getCapacity(){return capacity;}
+	virtual inline int getWeight(){return itemWeight;}
+	virtual inline int getCapacity(){return capacity;}
 	virtual inline std::list<Item> getinventory() const{ return inventory; };
 	virtual void addItem(Item i);
 	virtual void removeItem(Item i);
