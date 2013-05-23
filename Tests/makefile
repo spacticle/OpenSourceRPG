@@ -2,7 +2,7 @@ CXXFLAGS = -lcppunit
 
 CPPUNIT = /usr/lib/
 
-OBJS = ../Command/*.o ../Model/*.o MainTests.o TestCommand.o TestItem.o TestInventory.o   
+OBJS = ../Command/*.o ../Model/*.o MainTests.o TestCommand.o TestItem.o TestInventory.o TestActor.o
 
 LIBS =	/usr/lib/libcppunit.a
 
@@ -19,6 +19,9 @@ all:	$(TARGET)
 	
 ../Model/*.o:
 	make -C ../Model
+	
+TestActor.o:
+	$(CXX) -c TestActor.cpp $(CXXFLAGS) -o TestActor.o
 	
 TestCommand.o:
 	$(CXX) -c TestCommand.cpp $(CXXFLAGS) -o TestCommand.o

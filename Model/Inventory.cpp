@@ -13,17 +13,25 @@
 
 using namespace std;
 
-class OverCapacity : public std::exception{
-	virtual const char* what() const throw(){
-		return "Item is too heavy to place into inventory!\n";
-	}
-} OverCap;
+const char* OverCapacity::what() const throw(){
+	return "Item is too heavy to place into inventory!\n";
+}
 
-class ItemNotFound : public std::exception{
-	virtual const char* what() const throw(){
-		return "Item is not in inventory!\n";
-	}
-} ItNotFound;
+const char* ItemNotFound::what() const throw(){
+	return "Item is not in inventory!\n";
+}
+
+//class OverCapacity : public std::exception{
+//	virtual const char* what() const throw(){
+//		return "Item is too heavy to place into inventory!\n";
+//	}
+//} OverCap;
+//
+//class ItemNotFound : public std::exception{
+//	virtual const char* what() const throw(){
+//		return "Item is not in inventory!\n";
+//	}
+//} ItNotFound;
 
 Inventory::Inventory() {
 	capacity = 500;
@@ -43,7 +51,7 @@ Inventory::Inventory(int cap, int w){
 
 void Inventory::addItem(Item i){
 	if(i.getWeight() + itemWeight > capacity){
-		throw OverCap;
+		throw new OverCapacity();
 	}else{
 		inventory.push_back(i);
 		itemWeight += i.getWeight();
@@ -56,6 +64,6 @@ void Inventory::removeItem(Item i){
 	if(inventory.size()<s0){
 		itemWeight -= i.getWeight();
 	}else{
-		throw ItNotFound;
+		throw new ItemNotFound();
 	}
 }
