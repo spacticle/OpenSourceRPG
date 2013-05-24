@@ -7,7 +7,7 @@
 
 #ifndef INVENTORY_HH_
 #define INVENTORY_HH_
-#include <list>
+#include <vector>
 #include <string.h>
 #include <algorithm>
 #include <exception>
@@ -35,12 +35,15 @@ public:
 
 	virtual inline int getWeight(){return itemWeight;}
 	virtual inline int getCapacity(){return capacity;}
-	virtual inline std::list<Item> getInventory() const{ return inventory; };
+	virtual inline std::vector<Item> listInventory() const{ return inventory; };
 	virtual void addItem(Item i);
 	virtual void removeItem(Item i);
-	virtual inline void clearInventory(){inventory.clear();}
+	virtual inline void clearInventory(){
+		inventory.clear();
+		itemWeight = 0;
+	}
 private:
-	std::list<Item> inventory;
+	std::vector<Item> inventory;
 	int itemWeight;
 	int capacity;
 };

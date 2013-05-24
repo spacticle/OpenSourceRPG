@@ -15,29 +15,29 @@ using namespace std;
 
 Location::Location() {
 	cellName = "default";
-	//neighbors = map<Direction, Location>();
+	neighbors = map<Direction, const Location>();
 	actors = vector<Actor>();
 	inventory = new Inventory();
 	level = 0;
 }
 
-Location::Location(string name, int level){
+Location::Location(string name, int lev){
 	cellName = name;
-	this->level = level;
-	//neighbors = map<Direction, Location>();
+	level = lev;
+	neighbors = map<Direction, const Location>();
 	actors = vector<Actor>();
 	inventory = new Inventory();
 }
 
 Location::~Location() {
-	// TODO Auto-generated destructor stub
+	delete inventory;
 }
 
-void Location::addNeighbor(Direction d, const Location &l){
+void Location::addNeighbor(Direction d, const Location l){
 	//TODO add exception
 	//neighbors[d] = l;
 	//std::pair<Direction, const Location>
-	neighbors.insert(std::pair<Direction, const Location&>(d, l));
+	neighbors.insert(std::pair<Direction, const Location>(d, l));
 }
 
 void Location::enter(Actor a){
@@ -52,12 +52,12 @@ void Location::exit(Actor a){
 	}
 }
 
-Location &Location::operator=(const Location& l){
+Location &Location::operator=(const Location l){
 	if(this != &l){
 		cellName = l.getName();
 		neighbors = l.listNeighbors();
 		actors = l.listOccupants();
-		inventory = l.getInventory();
+		inventory = l.getLocInventory();
 		//level = l.getLevel();
 	}
 	return *this;

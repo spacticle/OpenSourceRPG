@@ -7,7 +7,7 @@
 
 #include "Inventory.hh"
 #include "Item.hh"
-#include <list>
+#include <vector>
 #include <string.h>
 #include <exception>
 
@@ -36,7 +36,7 @@ const char* ItemNotFound::what() const throw(){
 Inventory::Inventory() {
 	capacity = 500;
 	itemWeight = 0;
-	//inventory = list<Item*>();
+	inventory = vector<Item>();
 }
 
 Inventory::~Inventory() {
@@ -60,7 +60,12 @@ void Inventory::addItem(Item i){
 
 void Inventory::removeItem(Item i){
 	int s0 = inventory.size();
-	inventory.remove(i);
+	for(vector<Item>::iterator it = inventory.begin(); it != inventory.end(); ++it){
+			if(*it == i){
+				inventory.erase(it);//TODO
+			}
+		}
+	//inventory.remove(i);
 	if(inventory.size()<s0){
 		itemWeight -= i.getWeight();
 	}else{

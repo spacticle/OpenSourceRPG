@@ -2,7 +2,7 @@ CXXFLAGS = -lcppunit
 
 CPPUNIT = /usr/lib/
 
-OBJS = ../Command/*.o ../Model/*.o MainTests.o TestCommand.o TestItem.o TestInventory.o TestActor.o
+OBJS = ../Command/*.o ../Model/*.o MainTests.o TestCommand.o TestItem.o TestInventory.o TestActor.o TestLocation.o
 
 LIBS =	/usr/lib/libcppunit.a
 
@@ -31,6 +31,9 @@ TestItem.o:
 	
 TestInventory.o:
 	$(CXX) -c TestInventory.cpp $(CXXFLAGS) -o TestInventory.o
+	
+TestLocation.o:
+	$(CXX) -c TestLocation.cpp $(CXXFLAGS) -o TestLocation.o
 	
 MainTests.o:
 	$(CXX) -c MainTests.cpp $(CXXFLAGS) -o MainTests.o

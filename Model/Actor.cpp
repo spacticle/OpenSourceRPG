@@ -28,7 +28,8 @@ Actor::Actor(string name, int health, int damage){
 }
 
 Actor::~Actor() {
-	// TODO Auto-generated destructor stub
+	delete currentLocation;
+	delete inventory;
 }
 
 void Actor::setCurrentLocation(Location &l){
