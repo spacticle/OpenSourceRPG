@@ -32,12 +32,14 @@ void TestInventory::tearDown(){
 void TestInventory::testDefaults(){
 	CPPUNIT_ASSERT(inv0.getWeight()==0);
 	CPPUNIT_ASSERT(inv0.getCapacity()==500);
+	//cout << "Inventory size = " << inv0.listInventory().size() << endl;
 	CPPUNIT_ASSERT(inv0.listInventory().size() == 0);
 
 	//////////
 
 	CPPUNIT_ASSERT(inv2->getWeight()==0);
 	CPPUNIT_ASSERT(inv2->getCapacity()==500);
+	//cout << "Inventory size = " << inv2->listInventory().size() << endl;
 	CPPUNIT_ASSERT(inv2->listInventory().size() == 0);
 
 }

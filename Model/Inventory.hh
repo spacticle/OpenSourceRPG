@@ -35,15 +35,15 @@ public:
 
 	virtual inline int getWeight(){return itemWeight;}
 	virtual inline int getCapacity(){return capacity;}
-	virtual inline std::vector<Item> listInventory() const{ return inventory; };
-	virtual void addItem(Item i);
-	virtual void removeItem(Item i);
+	virtual inline std::vector<Item*> listInventory() const{ return inventory; };
+	virtual void addItem(Item &i);
+	virtual void removeItem(Item &i);
 	virtual inline void clearInventory(){
 		inventory.clear();
 		itemWeight = 0;
 	}
 private:
-	std::vector<Item> inventory;
+	std::vector<Item*> inventory;
 	int itemWeight;
 	int capacity;
 };

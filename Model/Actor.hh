@@ -9,8 +9,8 @@
 #define ACTOR_HH_
 #include <string>
 #include <string.h>
-#include "Inventory.hh"
-
+//#include "Inventory.hh"
+class Inventory;
 class Location;
 
 class Actor{

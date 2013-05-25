@@ -19,7 +19,7 @@ class TestLocation : public CppUnit::TestFixture{
 	CPPUNIT_TEST_SUITE_END();
 
 private:
-	Location loc0, loc1, *loc2, *loc3;
+	Location loc0, loc1, loc4, *loc2, *loc3;
 public:
 	void setUp();
 	void tearDown();

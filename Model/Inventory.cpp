@@ -5,11 +5,11 @@
  *      Author: zherr
  */
 
-#include "Inventory.hh"
-#include "Item.hh"
 #include <vector>
 #include <string.h>
 #include <exception>
+#include "Inventory.hh"
+#include "Item.hh"
 
 using namespace std;
 
@@ -36,32 +36,32 @@ const char* ItemNotFound::what() const throw(){
 Inventory::Inventory() {
 	capacity = 500;
 	itemWeight = 0;
-	inventory = vector<Item>();
+	inventory = vector<Item*>();
 }
 
 Inventory::~Inventory() {
-	// TODO Auto-generated destructor stub
+	//TODO delete inventory;
 }
 
 Inventory::Inventory(int cap, int w){
 	capacity = cap;
 	itemWeight = w;
-	//inventory = list<Item*>();
+	inventory = vector<Item*>();
 }
 
-void Inventory::addItem(Item i){
+void Inventory::addItem(Item &i){
 	if(i.getWeight() + itemWeight > capacity){
 		throw new OverCapacity();
 	}else{
-		inventory.push_back(i);
+		inventory.push_back(&i);
 		itemWeight += i.getWeight();
 	}
 }
 
-void Inventory::removeItem(Item i){
+void Inventory::removeItem(Item &i){
 	int s0 = inventory.size();
-	for(vector<Item>::iterator it = inventory.begin(); it != inventory.end(); ++it){
-			if(*it == i){
+	for(vector<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it){
+			if(*it == &i){
 				inventory.erase(it);//TODO
 			}
 		}

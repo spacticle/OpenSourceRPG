@@ -51,7 +51,7 @@ void TestActor::testFunctions(){
 	CPPUNIT_ASSERT(act1 == testActor);
 	// Test location change
 	CPPUNIT_ASSERT(strcmp(act1.getCurrentLocation()->getName().c_str(), "default")==0);
-	Location loc0 = Location("Mordor", 1);
+	Location loc0 = Location(1, "Mordor");
 	act1.setCurrentLocation(loc0);
 	CPPUNIT_ASSERT(strcmp(act1.getCurrentLocation()->getName().c_str(), "Mordor")==0);
 	// Test inventory handling

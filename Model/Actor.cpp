@@ -6,6 +6,7 @@
  */
 
 #include "Actor.hh"
+#include "Inventory.hh"
 #include "Location.hh"
 #include <string>
 
@@ -28,8 +29,8 @@ Actor::Actor(string name, int health, int damage){
 }
 
 Actor::~Actor() {
-	delete currentLocation;
-	delete inventory;
+	//TODO delete currentLocation;
+	//TODO delete inventory;
 }
 
 void Actor::setCurrentLocation(Location &l){
