@@ -8,6 +8,7 @@
 #include <vector>
 #include <string.h>
 #include <exception>
+#include <algorithm>
 #include "Inventory.hh"
 #include "Item.hh"
 
@@ -39,8 +40,19 @@ Inventory::Inventory() {
 	inventory = vector<Item*>();
 }
 
+//static bool deleteAll(Item *theElt){
+//	delete theElt;
+//	return true;
+//}
+
 Inventory::~Inventory() {
 	//TODO delete inventory;
+	//remove_if(inventory.begin(), inventory.end(), deleteAll);
+	for(std::vector<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it){
+		Item *item = *it;
+		delete(item);
+	}
+	inventory.clear();
 }
 
 Inventory::Inventory(int cap, int w){

@@ -1,27 +1,29 @@
 /*
- * TestItem.hh
+ * TestLevel.hh
  *
- *  Created on: May 13, 2013
+ *  Created on: May 28, 2013
  *      Author: zherr
  */
 
-#ifndef TESTITEM_HH_
-#define TESTITEM_HH_
-#include "../Model/Item.hh"
+#ifndef TESTLEVEL_HH_
+#define TESTLEVEL_HH_
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include "../Model/Level.hh"
+#include "../Model/Location.hh"
 
-class TestItem : public CppUnit::TestFixture{
+class TestLevel : public CppUnit::TestFixture {
 
-	CPPUNIT_TEST_SUITE(TestItem);
+	CPPUNIT_TEST_SUITE(TestLevel);
 	CPPUNIT_TEST(testDefaults);
 	CPPUNIT_TEST(testPDefaults);
 	CPPUNIT_TEST(testFunctions);
 	CPPUNIT_TEST(testPFunctions);
 	CPPUNIT_TEST_SUITE_END();
 
-private:
-	Item i0, i1, *i2, *i3;
+	Level lev0, lev1, *lev2, *lev3;
+	Location *loc;
+
 public:
 	void setUp();
 	void tearDown();
@@ -30,7 +32,6 @@ protected:
 	void testPDefaults();
 	void testFunctions();
 	void testPFunctions();
-
 };
 
-#endif /* TESTITEM_HH_ */
+#endif /* TESTLEVEL_HH_ */

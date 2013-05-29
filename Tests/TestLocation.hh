@@ -15,17 +15,22 @@ class TestLocation : public CppUnit::TestFixture{
 
 	CPPUNIT_TEST_SUITE(TestLocation);
 	CPPUNIT_TEST(testDefaults);
+	CPPUNIT_TEST(testPDefaults);
 	CPPUNIT_TEST(testFunctions);
+	CPPUNIT_TEST(testPFunctions);
 	CPPUNIT_TEST_SUITE_END();
 
 private:
-	Location loc0, loc1, loc4, *loc2, *loc3;
+	Location testLevel, loc0, loc1, loc4, *loc2, *loc3;
+	Location *equalTest;
 public:
 	void setUp();
 	void tearDown();
 protected:
 	void testDefaults();
+	void testPDefaults();
 	void testFunctions();
+	void testPFunctions();
 };
 
 #endif /* TESTLOCATION_HH_ */

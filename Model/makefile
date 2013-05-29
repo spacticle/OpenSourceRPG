@@ -1,6 +1,6 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-OBJS =		Actor.o Item.o Location.o Game.o Inventory.o
+OBJS =		Actor.o Item.o Location.o Game.o Inventory.o Level.o
 
 LIBS =	
 
@@ -20,6 +20,9 @@ Item.o:
 	
 Inventory.o:
 	$(CXX) -c Inventory.cpp -o Inventory.o
+	
+Level.o:
+	$(CXX) -c Level.cpp -o Level.o
 
 clean:
 	rm -f $(OBJS) $(TARGET) *.o

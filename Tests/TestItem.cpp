@@ -30,7 +30,9 @@ void TestItem::testDefaults(){
 	CPPUNIT_ASSERT((strcmp(i0.getName().c_str(), "")==0));
 	CPPUNIT_ASSERT((strcmp(i0.getDescr().c_str(), "")==0));
 	CPPUNIT_ASSERT(i0.getWeight()==0);
+}
 
+void TestItem::testPDefaults(){
 	CPPUNIT_ASSERT((strcmp((i2->getName()).c_str(), "")==0));
 	CPPUNIT_ASSERT((strcmp((i2->getDescr()).c_str(), "")==0));
 	CPPUNIT_ASSERT(i2->getWeight()==0);
@@ -40,7 +42,9 @@ void TestItem::testFunctions(){
 	CPPUNIT_ASSERT((strcmp(i1.getName().c_str(), "Sword")==0));
 	CPPUNIT_ASSERT((strcmp(i1.getDescr().c_str(), "a sharp sword")==0));
 	CPPUNIT_ASSERT(i1.getWeight()==130);
+}
 
+void TestItem::testPFunctions(){
 	CPPUNIT_ASSERT((strcmp((i3->getName()).c_str(), "Shield")==0));
 	CPPUNIT_ASSERT((strcmp((i3->getDescr()).c_str(), "a wooden shield")==0));
 	CPPUNIT_ASSERT(i3->getWeight()==50);

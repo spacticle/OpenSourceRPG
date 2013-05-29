@@ -29,8 +29,8 @@ Actor::Actor(string name, int health, int damage){
 }
 
 Actor::~Actor() {
-	//TODO delete currentLocation;
-	//TODO delete inventory;
+	delete currentLocation;
+	delete inventory;
 }
 
 void Actor::setCurrentLocation(Location &l){

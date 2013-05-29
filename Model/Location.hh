@@ -27,21 +27,26 @@ public:
 	Location( int level, std::string name);
 	virtual ~Location();
 
-	virtual void addNeighbor(Direction d, const Location l);
-	virtual std::map<Direction, const Location> *listNeighbors() const {return neighbors;}
-	virtual inline std::vector<Actor> *listOccupants() const {return actors;}
-	virtual void enter(Actor a);
-	virtual void exit(Actor a);
+	virtual void addNeighbor(Direction d, Location *l);
+	virtual std::map<Direction, Location*> listNeighbors() const {return neighbors;}
+	virtual inline std::vector<Actor*> listOccupants() const {return actors;}
+	virtual void enter(Actor *a);
+	virtual void exit(Actor *a);
 	virtual void changeLevel(int l);
 	virtual inline std::string getName() const {return cellName;}
 	virtual inline Inventory *getLocInventory() const {return inventory;}
 	virtual inline int getLevel() {return level;}
 	virtual Location & operator=(const Location);
+	virtual inline bool operator==(Location l){
+		if(strcmp(this->cellName.c_str(), l.cellName.c_str())==0){
+			return true;
+		}else{ return false; }
+	}
 private:
 	int level;
 	std::string cellName;
-	std::map<Direction, const Location> *neighbors;
-	std::vector<Actor> *actors;
+	std::map<Direction, Location*> neighbors;
+	std::vector<Actor*> actors;
 	Inventory *inventory;
 };
 

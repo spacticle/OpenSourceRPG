@@ -16,17 +16,22 @@ class TestInventory : public CppUnit::TestFixture{
 
 	CPPUNIT_TEST_SUITE(TestInventory);
 	CPPUNIT_TEST(testDefaults);
+	CPPUNIT_TEST(testPDefaults);
 	CPPUNIT_TEST(testFunctions);
+	CPPUNIT_TEST(testPFunctions);
 	CPPUNIT_TEST_SUITE_END();
 
 private:
 	Inventory inv0, inv1, *inv2, *inv3;
+	Item item0, item2, heavy, *item1;
 public:
 	void setUp();
 	void tearDown();
 protected:
 	void testDefaults();
+	void testPDefaults();
 	void testFunctions();
+	void testPFunctions();
 
 };
 
