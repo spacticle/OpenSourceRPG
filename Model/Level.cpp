@@ -51,6 +51,30 @@ Level::~Level() {
 	delete mainPlayer;
 }
 
+Level::Level(const Level &lev) :
+	locations(lev.locations.size()),
+	monsters(lev.monsters.size()){
+
+	for(int i = 0; i < lev.locations.size(); ++i){
+		locations[i] = new Location(*lev.locations[i]);
+	}
+	for(int j = 0; j < lev.monsters.size(); ++j){
+		monsters[j] = new Actor(*lev.monsters[j]);
+	}
+
+	mainPlayer = new Actor(*lev.mainPlayer);
+}
+
+Level& Level::operator =(const Level &lev){
+
+	Level tmp( lev );
+	std::swap(mainPlayer, tmp.mainPlayer);
+	std::swap(locations, tmp.locations);
+	std::swap(monsters, tmp.monsters);
+
+	return *this;
+}
+
 void Level::addLocation(Location *loc){
 	locations.push_back(loc);
 }

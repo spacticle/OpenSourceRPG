@@ -19,12 +19,14 @@ public:
 	Level();
 	Level(Actor *mp, std::vector<Location*> locs, std::vector<Actor*> monsts);
 	virtual ~Level();
+	Level(const Level&);
 
 	virtual inline std::vector<Location*> getLevelLocations() const{ return locations;}
 	virtual inline std::vector<Actor*> getMonsters() const{ return monsters;}
 	virtual inline void clearLocations(){ locations.clear();}
 	virtual inline Actor *getMainPlayer(){ return mainPlayer; }//const?
 	virtual void addLocation(Location* loc);
+	virtual Level& operator=(const Level&);
 	//virtual Location* getLocation(std::string name) const;
 
 private:
