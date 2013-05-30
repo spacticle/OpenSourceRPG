@@ -30,8 +30,8 @@ void TestInventory::setUp(){
 
 void TestInventory::tearDown(){
 	delete inv2;
-	//delete inv3;
-	//delete item1;
+	delete inv3;
+	delete item1;
 }
 
 void TestInventory::testDefaults(){

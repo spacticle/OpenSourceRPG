@@ -33,6 +33,13 @@ Actor::~Actor() {
 	delete inventory;
 }
 
+void Actor::Actor(const Actor another){
+	Inventory *inv = new Inventory();
+	for(int i = 0; i < inventory->listInventory().size(); ++i){
+		//TODO Item *newItem =
+	}
+}
+
 void Actor::setCurrentLocation(Location &l){
 	*currentLocation = l;
 }

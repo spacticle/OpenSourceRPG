@@ -18,6 +18,7 @@ public:
 	Actor();
 	Actor(std::string name, int health, int baseDamage);
 	virtual ~Actor();
+	void Actor(const Actor& another);
 
 	virtual void setCurrentLocation(Location &l);
 	virtual inline Location *getCurrentLocation() const{ return currentLocation;}

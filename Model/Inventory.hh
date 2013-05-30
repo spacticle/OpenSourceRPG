@@ -32,16 +32,15 @@ public:
 	Inventory();
 	virtual ~Inventory();
 	Inventory(int capacity, int itemWeight = 0);
+	void Inventory(const Inventory& another);
 
 	virtual inline int getWeight(){return itemWeight;}
 	virtual inline int getCapacity(){return capacity;}
 	virtual inline std::vector<Item*> listInventory() const{ return inventory; };
 	virtual void addItem(Item &i);
 	virtual void removeItem(Item &i);
-	virtual inline void clearInventory(){
-		inventory.clear();
-		itemWeight = 0;
-	}
+	virtual inline void clearInventory();
+	virtual Inventory& operator=(const Inventory&);//TODO
 private:
 	std::vector<Item*> inventory;
 	int itemWeight;

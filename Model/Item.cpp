@@ -23,6 +23,7 @@ Item::Item(string name, string description, int weight){
 	this->weight = weight;
 }
 
+
 Item::~Item() {
 	// TODO Auto-generated destructor stub
 }

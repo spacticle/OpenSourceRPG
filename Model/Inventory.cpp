@@ -22,35 +22,16 @@ const char* ItemNotFound::what() const throw(){
 	return "Item is not in inventory!\n";
 }
 
-//class OverCapacity : public std::exception{
-//	virtual const char* what() const throw(){
-//		return "Item is too heavy to place into inventory!\n";
-//	}
-//} OverCap;
-//
-//class ItemNotFound : public std::exception{
-//	virtual const char* what() const throw(){
-//		return "Item is not in inventory!\n";
-//	}
-//} ItNotFound;
-
 Inventory::Inventory() {
 	capacity = 500;
 	itemWeight = 0;
 	inventory = vector<Item*>();
 }
 
-//static bool deleteAll(Item *theElt){
-//	delete theElt;
-//	return true;
-//}
-
 Inventory::~Inventory() {
 	//TODO delete inventory;
-	//remove_if(inventory.begin(), inventory.end(), deleteAll);
-	for(std::vector<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it){
-		Item *item = *it;
-		delete(item);
+	for(int i = 0; i < inventory.size(); ++i){
+		delete inventory[i];
 	}
 	inventory.clear();
 }
@@ -59,6 +40,14 @@ Inventory::Inventory(int cap, int w){
 	capacity = cap;
 	itemWeight = w;
 	inventory = vector<Item*>();
+}
+
+//TODO Copy Constructor
+void Inventory::Inventory(const Inventory &another):
+	inventory(another.inventory.size()){
+	for(int i = 0; i < another.inventory.size(); ++i){
+		inventory[i] = new Item(*another.inventory[i]);
+	}
 }
 
 void Inventory::addItem(Item &i){
@@ -74,6 +63,7 @@ void Inventory::removeItem(Item &i){
 	int s0 = inventory.size();
 	for(vector<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it){
 			if(*it == &i){
+				delete *it;
 				inventory.erase(it);//TODO
 			}
 		}
@@ -83,4 +73,12 @@ void Inventory::removeItem(Item &i){
 	}else{
 		throw new ItemNotFound();
 	}
+}
+
+void Inventory::clearInventory(){
+	for(int i = 0; i < inventory.size(); ++i){
+		delete inventory[i];
+	}
+	inventory.clear();
+	itemWeight = 0;
 }
