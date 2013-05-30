@@ -14,11 +14,17 @@ class Inventory;
 class Location;
 
 class Actor{
+private:
+	std::string name;
+	Location *currentLocation;
+	Inventory *inventory;
+	int health;
+	int baseDamage;
 public:
 	Actor();
 	Actor(std::string name, int health, int baseDamage);
 	virtual ~Actor();
-	void Actor(const Actor& another);
+	Actor(const Actor &another);
 
 	virtual void setCurrentLocation(Location &l);
 	virtual inline Location *getCurrentLocation() const{ return currentLocation;}
@@ -27,17 +33,12 @@ public:
 	virtual inline int getHealth(){ return health;}
 	virtual void alterHealth(int var);
 	virtual inline int getBaseDamage(){ return baseDamage;}
+	virtual Actor& operator=(const Actor&);
 	virtual inline bool operator==(Actor a){
 		if(strcmp(a.getName().c_str(), name.c_str()) == 0){
 			return true;
 		}else{return false;}
 	}
-private:
-	std::string name;
-	Location *currentLocation;
-	Inventory *inventory;
-	int health;
-	int baseDamage;
 };
 
 #endif /* ACTOR_HH_ */

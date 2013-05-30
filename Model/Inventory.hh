@@ -28,11 +28,15 @@ public:
 };
 
 class Inventory{
+private:
+	std::vector<Item*> inventory;
+	int itemWeight;
+	int capacity;
 public:
 	Inventory();
 	virtual ~Inventory();
 	Inventory(int capacity, int itemWeight = 0);
-	void Inventory(const Inventory& another);
+	Inventory(const Inventory& another);
 
 	virtual inline int getWeight(){return itemWeight;}
 	virtual inline int getCapacity(){return capacity;}
@@ -41,10 +45,6 @@ public:
 	virtual void removeItem(Item &i);
 	virtual inline void clearInventory();
 	virtual Inventory& operator=(const Inventory&);//TODO
-private:
-	std::vector<Item*> inventory;
-	int itemWeight;
-	int capacity;
 };
 
 #endif /* INVENTORY_HH_ */

@@ -23,14 +23,6 @@ Location::Location() {
 	inventory = new Inventory();
 }
 
-//Location::Location(int lev, string name){
-//	level = lev;
-//	cellName = name;
-//	neighbors = new map<Direction, const Location>();
-//	actors = new vector<Actor>();
-//	inventory = new Inventory();
-//}
-
 Location::Location( int level, std::string name)
 :level(level),
  cellName(name)
@@ -40,20 +32,7 @@ Location::Location( int level, std::string name)
 	inventory = new Inventory();
 };
 
-//static bool deleteAll(std::pair<Direction, Location*> *theElt){
-//	delete theElt->second;
-//	return true;
-//}
-//
-//static bool deleteAllActor(Actor *theElt){
-//	delete theElt;
-//	return true;
-//}
-
 Location::~Location() {
-//  TODO delete inventory;
-//	TODO delete actors;
-//	TODO delete neighbors;
 	for(int i = 0; i < actors.size(); i++){
 		delete actors[i];
 	}
@@ -62,7 +41,48 @@ Location::~Location() {
 		delete (*i).second;
 	}
 	neighbors.clear();
+
 	delete inventory;
+}
+
+Location::Location(const Location &loc) :
+		actors(loc.actors.size()),
+		neighbors(){
+
+	for(int i = 0; i < loc.actors.size(); ++i){
+		actors[i] = new Actor(*loc.actors[i]);
+	}
+
+	//TODO copy neighbors map
+	for(map<Direction, Location*>::const_iterator iter = neighbors.begin(); iter != neighbors.end(); ++iter){
+		neighbors[iter->first] = new Location(*(iter->second));
+	}
+
+	level = loc.level;
+	cellName = loc.cellName;
+	inventory = new Inventory(*loc.inventory);
+}
+
+//TODO Copy constructor
+Location& Location::operator=(const Location &l){
+	//if(this != &l){
+
+	Location tmp( l );
+
+//	inventory(tmp.inventory);//TODO or should tmo be 'l'?
+//	actors(tmp.actors);
+//	neighbors(tmp.neighbors);
+	std::swap(inventory, tmp.inventory);
+	std::swap(actors, tmp.actors);
+	std::swap(neighbors, tmp.neighbors);
+//	inventory = l.getLocInventory();
+//	actors = l.listOccupants();
+//	neighbors = l.listNeighbors();
+
+	std::swap(cellName, tmp.cellName);
+	std::swap(level, tmp.level);
+	//}
+	return *this;
 }
 
 void Location::addNeighbor(Direction d, Location *l){
@@ -86,17 +106,6 @@ void Location::exit(Actor *a){
 
 void Location::changeLevel(int l){
 	level = l;
-}
-
-Location &Location::operator=(const Location l){
-	if(this != &l){
-		cellName = l.getName();
-		neighbors = l.listNeighbors();
-		actors = l.listOccupants();
-		inventory = l.getLocInventory();
-		//level = l.getLevel();
-	}
-	return *this;
 }
 
 

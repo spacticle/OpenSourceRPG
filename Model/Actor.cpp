@@ -33,11 +33,26 @@ Actor::~Actor() {
 	delete inventory;
 }
 
-void Actor::Actor(const Actor another){
-	Inventory *inv = new Inventory();
-	for(int i = 0; i < inventory->listInventory().size(); ++i){
-		//TODO Item *newItem =
-	}
+//TODO Copy constructor
+Actor::Actor(const Actor &another){
+	currentLocation = new Location(*another.currentLocation);
+	inventory = new Inventory(*another.inventory);
+
+	name = another.name;
+	health = another.health;
+	baseDamage = another.baseDamage;
+}
+
+Actor& Actor::operator =(const Actor &act){
+
+	Actor tmp( act );
+	std::swap(name, tmp.name);
+	std::swap(health, tmp.health);
+	std::swap(baseDamage, tmp.baseDamage);
+	std::swap(currentLocation, tmp.currentLocation);
+	std::swap(inventory, tmp.inventory);
+
+	return *this;
 }
 
 void Actor::setCurrentLocation(Location &l){

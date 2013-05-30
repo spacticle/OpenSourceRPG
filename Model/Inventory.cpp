@@ -43,11 +43,25 @@ Inventory::Inventory(int cap, int w){
 }
 
 //TODO Copy Constructor
-void Inventory::Inventory(const Inventory &another):
+Inventory::Inventory(const Inventory &another):
 	inventory(another.inventory.size()){
 	for(int i = 0; i < another.inventory.size(); ++i){
 		inventory[i] = new Item(*another.inventory[i]);
 	}
+	capacity = another.capacity;
+	itemWeight = another.itemWeight;
+}
+
+//TODO Assignment operator
+Inventory& Inventory::operator=(const Inventory& inv){
+
+	Inventory tmp( inv );
+
+	std::swap(inventory, tmp.inventory);
+	std::swap(capacity, tmp.capacity);
+	std::swap(itemWeight, tmp.itemWeight);
+
+	return *this;
 }
 
 void Inventory::addItem(Item &i){
