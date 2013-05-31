@@ -8,6 +8,7 @@
 #include "Actor.hh"
 #include "Inventory.hh"
 #include "Location.hh"
+#include <iostream>
 #include <string>
 
 using namespace std;

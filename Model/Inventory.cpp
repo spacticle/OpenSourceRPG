@@ -11,6 +11,7 @@
 #include <algorithm>
 #include "Inventory.hh"
 #include "Item.hh"
+#include <iostream>
 
 using namespace std;
 
@@ -30,8 +31,13 @@ Inventory::Inventory() {
 
 Inventory::~Inventory() {
 	//TODO delete inventory;
-	for(int i = 0; i < inventory.size(); ++i){
-		delete inventory[i];
+
+	for(vector<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it){
+		cout << "Inventory size: " << inventory.size() << endl;// TODO
+		//delete inventory[i];
+		delete *it;
+		it = inventory.erase(it);
+		cout << "Deleting items...\n";
 	}
 	inventory.clear();
 }
@@ -77,7 +83,7 @@ void Inventory::removeItem(Item &i){
 	int s0 = inventory.size();
 	for(vector<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it){
 			if(*it == &i){
-				delete *it;
+				//delete *it;
 				inventory.erase(it);//TODO
 			}
 		}
@@ -91,7 +97,7 @@ void Inventory::removeItem(Item &i){
 
 void Inventory::clearInventory(){
 	for(int i = 0; i < inventory.size(); ++i){
-		delete inventory[i];
+		//delete inventory[i];
 	}
 	inventory.clear();
 	itemWeight = 0;

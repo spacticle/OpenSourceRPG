@@ -43,7 +43,7 @@ public:
 	virtual inline std::vector<Item*> listInventory() const{ return inventory; };
 	virtual void addItem(Item &i);
 	virtual void removeItem(Item &i);
-	virtual inline void clearInventory();
+	virtual void clearInventory();
 	virtual Inventory& operator=(const Inventory&);//TODO
 };
 

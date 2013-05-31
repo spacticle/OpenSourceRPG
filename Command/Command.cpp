@@ -27,6 +27,21 @@ Command::~Command() {
 	// TODO Auto-generated destructor stub
 }
 
+Command::Command(const Command &com):
+	primaryCmd(com.primaryCmd),
+	secondaryCmd(com.secondaryCmd),
+	enabled(com.enabled){
+}
+
+Command& Command::operator =(const Command &com){
+	Command tmp( com );
+	std::swap(primaryCmd, tmp.primaryCmd);
+	std::swap(secondaryCmd, tmp.secondaryCmd);
+	std::swap(enabled, tmp.enabled);
+
+	return *this;
+}
+
 bool Command::isEnabled(){ return enabled; }
 
 bool Command::hasSecondCmd(){ return (strcmp(secondaryCmd.c_str(), "") != 0);}

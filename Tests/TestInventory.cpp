@@ -31,7 +31,8 @@ void TestInventory::setUp(){
 void TestInventory::tearDown(){
 	delete inv2;
 	delete inv3;
-	delete item1;
+	//delete item1;
+	cout << "Done with Inventory tearDown" << endl;
 }
 
 void TestInventory::testDefaults(){
@@ -70,6 +71,9 @@ void TestInventory::testFunctions(){
 	inv1.clearInventory();
 	CPPUNIT_ASSERT(inv1.listInventory().size()==0);
 	CPPUNIT_ASSERT(inv1.getWeight()==0);//TODO
+
+	cout << ":::Before teardown:::" << endl;
+	cout << "inv1 size: " << inv1.listInventory().size() << endl;
 }
 
 void TestInventory::testPFunctions(){
@@ -91,4 +95,7 @@ void TestInventory::testPFunctions(){
 	CPPUNIT_ASSERT_THROW(inv3->removeItem(item0), ItemNotFound*);
 	CPPUNIT_ASSERT(inv3->listInventory().size()==2);
 	CPPUNIT_ASSERT(inv3->getWeight()==65);
+
+	cout << ":::Before teardown:::" << endl;
+	cout << "inv3 size: " << inv3->listInventory().size() << endl;
 }

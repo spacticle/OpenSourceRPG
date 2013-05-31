@@ -14,6 +14,8 @@ class Command {
 		Command();
 		virtual ~Command();
 		Command(std::string primary, std::string secondary, bool enabled = true);
+		Command(const Command&);
+		virtual Command& operator=(const Command&);
 		virtual bool isEnabled();
 		virtual bool hasSecondCmd();
 		virtual std::string getPrimary();
