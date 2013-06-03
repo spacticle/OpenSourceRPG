@@ -14,6 +14,8 @@
 
 using namespace std;
 
+CPPUNIT_TEST_SUITE_REGISTRATION(TestLevel);
+
 void TestLevel::setUp(){
 	lev0 = Level();
 	lev1 = Level(new Actor(), vector<Location*>(), vector<Actor*>());

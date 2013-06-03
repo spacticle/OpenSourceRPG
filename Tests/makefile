@@ -2,7 +2,7 @@ CXXFLAGS = -lcppunit
 
 CPPUNIT = /usr/lib/
 
-OBJS = ../Command/*.o ../Model/*.o MainTests.o TestCommand.o TestItem.o TestInventory.o TestActor.o TestLocation.o TestLevel.o
+OBJS = ../Command/*.o ../Helper/*.o ../Model/*.o MainTests.o TestCommand.o TestItem.o TestInventory.o TestActor.o TestLocation.o TestLevel.o TestCommandMapper.o
 
 LIBS =	/usr/lib/libcppunit.a
 
@@ -19,6 +19,9 @@ all:	$(TARGET)
 	
 ../Model/*.o:
 	make -C ../Model
+	
+../Helper/*.o:
+	make -C ../Helper
 	
 TestActor.o:
 	$(CXX) -c TestActor.cpp $(CXXFLAGS) -o TestActor.o
@@ -38,6 +41,9 @@ TestLocation.o:
 TestLevel.o:
 	$(CXX) -c TestLevel.cpp $(CXXFLAGS) -o TestLevel.o
 	
+TestCommandMapper.o:
+	$(CXX) -c TestCommandMapper.cpp $(CXXFLAGS) -o TestCommandMapper.o
+	
 MainTests.o:
 	$(CXX) -c MainTests.cpp $(CXXFLAGS) -o MainTests.o
 
@@ -45,3 +51,4 @@ clean:
 	rm -f $(OBJS) $(TARGET) $(T_OBJS) $(T_TARGET)
 	make -C ../Command clean
 	make -C ../Model clean
+	make -C ../Helper clean

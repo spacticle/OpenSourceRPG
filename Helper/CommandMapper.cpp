@@ -10,7 +10,9 @@
 #include "../Model/Response.hh"
 #include <map>
 #include <ostream>
+#include <iostream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
@@ -22,9 +24,23 @@ void CommandMapper::init(Game *game){
 }
 
 bool CommandMapper::isCommand(string cmd){
-	return responses.at(cmd) != NULL; //test this
+	try{
+		responses.at(cmd);
+	}catch(std::out_of_range &oor){
+		cout << oor.what() << endl;
+		return false;
+	}
+	return true;
+
 }
 
 Response* CommandMapper::getResponse(string cmdWord){
+
+	try{
+		responses.at(cmdWord);
+	}catch(std::out_of_range &oor){
+		cout<< oor.what() << endl;
+		return NULL;
+	}
 	return responses.at(cmdWord);
 }
