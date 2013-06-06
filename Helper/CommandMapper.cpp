@@ -8,6 +8,7 @@
 #include "CommandMapper.hh"
 #include "../Model/Game.hh"
 #include "../Model/Response.hh"
+#include "../Model/DefaultTestResponse.hh"
 #include <map>
 #include <ostream>
 #include <iostream>
@@ -20,6 +21,7 @@ map<string, Response*> CommandMapper::responses;
 
 void CommandMapper::init(Game *game){
 	responses = map<string, Response*>();
+	responses.insert(std::pair<string, Response*>("Test", new DefaultTestResponse()));
 	//here we will put various Commands (responses)
 }
 

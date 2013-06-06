@@ -4,7 +4,7 @@ CPPUNIT = /usr/lib/
 
 OBJS = ../Command/*.o ../Helper/*.o ../Model/*.o MainTests.o \
 TestCommand.o TestItem.o TestInventory.o TestActor.o TestLocation.o \
-TestLevel.o TestCommandMapper.o TestFileUtil.o TestUI.o
+TestLevel.o TestCommandMapper.o TestFileUtil.o TestUI.o TestParser.o 
 
 LIBS =	/usr/lib/libcppunit.a
 
@@ -51,6 +51,9 @@ TestFileUtil.o:
 	
 TestUI.o:
 	$(CXX) -c TestUI.cpp $(CXXFLAGS) -o TestUI.o
+	
+TestParser.o:
+	$(CXX) -c TestParser.cpp $(CXXFLAGS) -o TestParser.o
 	
 MainTests.o:
 	$(CXX) -c MainTests.cpp $(CXXFLAGS) -o MainTests.o

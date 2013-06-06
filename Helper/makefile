@@ -1,6 +1,6 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-OBJS =		CommandMapper.o FileUtil.o UI.o
+OBJS =		CommandMapper.o FileUtil.o UI.o Parser.o
 
 LIBS =	
 
@@ -14,6 +14,9 @@ FileUtil.o:
 	
 UI.o:
 	$(CXX) -c UI.cpp -o UI.o
+	
+Parser.o:
+	$(CXX) -c Parser.cpp -o Parser.o
 
 clean:
 	rm -f $(OBJS) $(TARGET) 

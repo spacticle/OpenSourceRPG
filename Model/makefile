@@ -1,6 +1,6 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-OBJS =		Actor.o Item.o Location.o Game.o Inventory.o Level.o Response.o
+OBJS =		Actor.o Item.o Location.o Game.o Inventory.o Level.o Response.o DefaultTestResponse.o
 
 LIBS =	
 
@@ -26,6 +26,9 @@ Level.o:
 	
 Response.o:
 	$(CXX) -c Response.cpp -o Response.o
+	
+DefaultTestResponse.o:
+	$(CXX) -c DefaultTestResponse.cpp -o DefaultTestResponse.o
 
 clean:
 	rm -f $(OBJS) $(TARGET) *.o
